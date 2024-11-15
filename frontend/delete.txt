@@ -1,0 +1,2 @@
+baclground gradien:
+background: linear-gradient(135deg, #f53b57, #3d3c72);

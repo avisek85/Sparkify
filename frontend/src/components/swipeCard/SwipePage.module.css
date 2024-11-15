@@ -1,0 +1,35 @@
+.matchingProfilesContainer {
+  padding: 20px;
+}
+
+.swipePageHeading {
+  color: #3d3c72;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profileList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.loadingContainer, .errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+}
+
+.loadingText, .errorText {
+  font-size: 18px;
+}
+
+.retryButton {
+  background-color: #f53b57;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}

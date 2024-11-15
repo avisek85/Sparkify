@@ -1,0 +1,23 @@
+/* variables.css */
+:root {
+  /* Colors */
+  --primary-color: #f53b57;
+  --secondary-color: #3d3c72;
+  --background-color:#c8c7f7;
+;
+  --text-color: #333;
+  --error-color: #dc3545;
+  --success-color: #28a745;
+
+  /* Fonts */
+  --font-family: 'Poppins',Roboto, sans-serif;
+
+  /* Spacing */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+
+  /* Other */
+  --border-radius: 10px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
