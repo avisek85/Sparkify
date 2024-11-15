@@ -6,7 +6,7 @@ import axios from "axios";
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const API_URI = import.meta.env.VITE_API_URIL;
+  const API_URI = import.meta.env.VITE_API_URI;
 // console.log("api uri is",API_URI);
 
 

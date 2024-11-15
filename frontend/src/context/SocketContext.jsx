@@ -6,11 +6,11 @@ const SocketContext = createContext();
 export const useSocket = ()=>useContext(SocketContext);
 
 export const SocketProvider = ({children})=>{
-    const API_URI  = import.meta.env.VITE_API_URL;
+    const SOCKET_URI  = import.meta.env.VITE_SOCKET_URI;
 
     const [socket , setSocket] = useState(null);
     useEffect(()=>{
-        const socketConnection = io(`${API_URI}`);
+        const socketConnection = io(`${SOCKET_URI}`);
         setSocket(socketConnection);
 
         return ()=>socketConnection.disconnect();
