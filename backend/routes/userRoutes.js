@@ -1,6 +1,5 @@
 const express = require('express');
 const auth = require('../middleware/auth.middleware');
-const Profile = require('../models/Profile');
 const Swipe = require('../models/Swipe');
 const Matches = require('../models/Matches');
 const User = require('../models/User');
