@@ -1,9 +1,15 @@
 import React, { createContext, useCallback, useContext, useState } from "react";
 import axios from "axios";
+// const API_URI = import.meta.env.API_URI;
+
 
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
+  const API_URI = import.meta.env.VITE_API_URIL;
+// console.log("api uri is",API_URI);
+
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [userProfile,setUserProfile] = useState(null);
@@ -15,7 +21,7 @@ function AuthContextProvider({ children }) {
     setError("");
     setLoading(true);
     try {
-      const response = await axios.get(`/api/user/profile?userId=${userId}`, {
+      const response = await axios.get(`${API_URI}/user/profile?userId=${userId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -39,7 +45,7 @@ function AuthContextProvider({ children }) {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get("/api/user", {
+      const response = await axios.get(`${API_URI}/user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -62,7 +68,7 @@ function AuthContextProvider({ children }) {
     setError("");
  
     try {
-      const response = await axios.post("/api/user/profile", formData, {
+      const response = await axios.post(`${API_URI}/user/profile`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -94,7 +100,7 @@ function AuthContextProvider({ children }) {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("/api/auth/login", input, {
+      const response = await axios.post(`${API_URI}/auth/login`, input, {
         headers: { "Content-Type": "application/json" },
       });
       if (response?.data?.token) {
@@ -126,7 +132,7 @@ function AuthContextProvider({ children }) {
    
     // console.log("formdata in auth context: ",formData)
     try {
-      const response = await axios.post(`api/auth/register`,formData , {
+      const response = await axios.post(`${API_URI}/auth/register`,formData , {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (response?.data?.token) {
@@ -174,7 +180,7 @@ function AuthContextProvider({ children }) {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get("/api/user/matches", {
+      const response = await axios.get(`${API_URI}/user/matches`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -199,7 +205,7 @@ function AuthContextProvider({ children }) {
       // setError("");
       try {
         await axios.post(
-          "/api/user/swipe",
+          `${API_URI}/user/swipe`,
           {
             match: id,
             action: direction === "right" ? "like" : "dislike",
@@ -227,7 +233,7 @@ function AuthContextProvider({ children }) {
     setError("");
     try {
       const response = await axios.get(
-        `/api/user/chat/${userId}/${receiverId}`,
+        `${API_URI}/user/chat/${userId}/${receiverId}`,
         {
           headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -252,7 +258,7 @@ function AuthContextProvider({ children }) {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get(`/api/user/chat/search/${userId}/${receiverId}?keyword=${searchKeyword}`,{
+      const response = await axios.get(`${API_URI}/user/chat/search/${userId}/${receiverId}?keyword=${searchKeyword}`,{
         headers:{
           Authorization:`Bearer ${getToken()}`
         }
@@ -276,7 +282,7 @@ function AuthContextProvider({ children }) {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("/api/user/chat/upload", formData, {
+      const response = await axios.post(`${API_URI}/user/chat/upload`, formData, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
           "Content-Type": "multipart/form-data",
@@ -303,7 +309,7 @@ function AuthContextProvider({ children }) {
     setError("");
     setLoading(true);
     try {
-      const response = await axios.post("/api/user/find",{searchKeyword},{
+      const response = await axios.post(`${API_URI}/user/find`,{searchKeyword},{
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
