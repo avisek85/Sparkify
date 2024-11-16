@@ -27,7 +27,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* text-align: center; */
+    /* justify-content: center; */
     background: var(--background-color);
     padding: 20px;
   }
@@ -90,11 +91,11 @@
     background-color: #ff6b6b;
   }
   
-  .or {
+  /* .or {
     text-align: center;
     margin: 10px 0;
     color: #888;
-  }
+  } */
   
   .error,
   .message {
@@ -122,11 +123,13 @@
     }
     .leftSection{
       width: 70%;
+      text-align: center;
     }
     .input,
     .select,
     .fileInput {
-      padding: 0px;
+      /* width: 100%; */
+      padding: 10px 5px;
       margin: 20px 10px;
       border: 1px solid #ccc;
       border-radius: 8px;

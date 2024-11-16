@@ -6,10 +6,13 @@ const swipeSchema = new mongoose.Schema({
         ref:'User',
         required:true
     },
-    targetUserId:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
-    }]
+    actions: [
+        {
+          targetUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+          action: { type: String, enum: ['like', 'dislike'], required: true },
+        },
+      ],
+    
 },{timestamps:true});
 
 
