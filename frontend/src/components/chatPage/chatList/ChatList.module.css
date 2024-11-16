@@ -168,3 +168,12 @@
     }
   }
   
+  @media (max-width: 570px){
+    .chatItem {
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+      border-radius: 8px;
+      
+    }
+  }
