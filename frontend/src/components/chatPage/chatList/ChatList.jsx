@@ -7,13 +7,22 @@ import styles from "./ChatList.module.css";
 import { useSocket } from "../../../context/SocketContext";
 
 function ChatList() {
+  const API_URI = import.meta.env.VITE_API_URL;
   const socket = useSocket();
   const navigate = useNavigate();
   const { getToken,chatListFetchingFunction } = useAuthContext();
   const [chats, setChats] = useState([]);
 
   const fetchChatList = useCallback(async () => {
+<<<<<<< HEAD
     const response = await chatListFetchingFunction();
+=======
+    const response = await axios.get(`${API_URI}/user/chat/all`, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+>>>>>>> b549261e854017103f664bd48033b22b4fe35098
     console.log("response in fetching chatList ", response);
     setChats(response.data);
   }, [getToken]);
