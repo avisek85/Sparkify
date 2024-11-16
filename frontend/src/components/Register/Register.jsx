@@ -133,7 +133,7 @@ function Register() {
             className={styles.select}
             required
           >
-            <option value="">Select Gender</option>
+            <option value="">Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
@@ -163,6 +163,10 @@ function Register() {
           {/* Register Button */}
           <button type="submit" className={styles.button} onClick={handleSubmit}>Register</button>
         </div>
+        <button type="submit" className={styles.button} style={{background:"#2c2a5a"}} onClick={()=>{
+          navigate("/login")
+        }}>Login</button>
+
       </div>
     </div>
   );

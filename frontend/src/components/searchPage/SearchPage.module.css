@@ -144,4 +144,13 @@
 
 }
 
+@media (max-width: 768px){
+  .SearchPageContainer {
+    gap: 20px;
+    /* margin-bottom: 10px; */
+    justify-content: center;
+    margin: 10px;
+    /* margin-left: 90px; */
+  }
+}
 

@@ -14,7 +14,7 @@
   
   .registerContainer {
     display: flex;
-    max-width: 1000px;
+    max-width: 80vw;
     width: 100%;
     background-color: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -113,3 +113,24 @@
     background-color: #4caf50;
   }
   
+  @media (max-width: 832px){
+   
+    .registerContainer {
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    .leftSection{
+      width: 70%;
+    }
+    .input,
+    .select,
+    .fileInput {
+      padding: 0px;
+      margin: 20px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+   
+  }

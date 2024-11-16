@@ -3,31 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContextProvider";
 import decodeJsonWebToken from "../../../utils/decodeJwt";
 import axios from "axios";
-import "./ChatList.css";
+import styles from "./ChatList.module.css";
 import { useSocket } from "../../../context/SocketContext";
 
 function ChatList() {
   const socket = useSocket();
   const navigate = useNavigate();
-  const { getToken } = useAuthContext();
+  const { getToken,chatListFetchingFunction } = useAuthContext();
   const [chats, setChats] = useState([]);
 
   const fetchChatList = useCallback(async () => {
-    const response = await axios.get("/api/user/chat/all", {
-      headers: {
-        Authorization: `Bearer ${getToken()}`,
-      },
-    });
+    const response = await chatListFetchingFunction();
     console.log("response in fetching chatList ", response);
     setChats(response.data);
   }, [getToken]);
 
-  // UseEffect for fetching chat list on load and handling socket events
   useEffect(() => {
-    // Fetch chat list on component mount
     fetchChatList();
 
-    // Register socket event
     if (socket) {
       console.log("Listening to 'reviseList' event in ChatList");
       socket.on("reviseList", fetchChatList);
@@ -41,23 +34,23 @@ function ChatList() {
   }, [socket, fetchChatList]);
 
   return (
-    <div className="chat-list-container">
-      <div className="chat-list">
-       {chats?.length === 0 ? <p className="no-chats">No chats available</p>:
+    <div className={styles.chatListContainer}>
+      <div className={styles.chatList}>
+       {chats?.length === 0 ? <p className={styles.noChats}>No chats available</p>:
         chats?.map((chat) => (
           <div
             key={chat._id}
-            className="chat-item"
+            className={styles.chatItem}
             onClick={() => navigate(`/chat/${chat?.participants[0]?._id}`)}
           >
             <img
               src={chat?.participants[0]?.profilePicture}
               alt="user-avatar"
-              className="user-avatar"
+              className={styles.userAvatar}
             />
-            <div className="chat-info">
+            <div className={styles.chatInfo}>
               <h4>{chat?.participants[0]?.name}</h4>
-              <p className="messageText">
+              <p className={styles.messageText}>
                 {chat?.message[chat?.message.length - 1]?.text?.length > 30
                   ? chat.message[chat.message.length - 1].text.slice(0, 30) +
                     "..."

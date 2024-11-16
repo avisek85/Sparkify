@@ -1,6 +1,6 @@
 import React from "react";
 import { FaMusic, FaHiking, FaPaintBrush, FaHeart } from "react-icons/fa";
-import "./Badge.css"
+import styles from  "./Badge.module.css"
 
 function Badge({ interest }) {
   const getIcon = (interest) => {
@@ -19,8 +19,8 @@ function Badge({ interest }) {
   };
 
   return <>
-  <span className="badge">
-    <span className="badge-icon">
+  <span className={styles.badge}>
+    <span className={styles.badgeIcon}>
         {getIcon(interest)}
     </span>
     {interest}

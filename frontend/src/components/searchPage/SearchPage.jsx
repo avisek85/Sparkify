@@ -11,8 +11,8 @@ function SearchPage() {
     const [lookingFor,setLookingFor] = useState("");
     const [interest,setInterest] = useState([]);
     const [profiles, setProfiles] = useState([]);
-    const {getToken,userProfile} = useAuthContext();
-     const navigate = useNavigate();
+    const {getToken,searchPageFunction} = useAuthContext();
+    //  const navigate = useNavigate();
   
  
 
@@ -43,13 +43,9 @@ function SearchPage() {
     
         try {
 
-            const response = await axios.post('/api/user/search', preferences,{
-                headers:{
-                    Authorization:`Bearer ${getToken()}`
-                }
-            });
+            const response = await searchPageFunction(preferences);
             console.log(response);
-            setProfiles(response.data); 
+            setProfiles(response); 
         } catch (error) {
             console.error("Error fetching profiles:", error);
           alert('Error fetching preferences');

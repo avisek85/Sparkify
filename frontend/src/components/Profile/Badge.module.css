@@ -7,8 +7,7 @@
     color: white;
     padding: 5px 12px;
     border-radius: 20px;
-    /* font-size: 14px; */
-    /* font-weight: 500; */
+  
     margin: 5px;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,7 +19,7 @@
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .badge-icon {
+  .badgeIcon {
     display: inline-flex;
     margin-right: 8px;
     /* font-size: 16px;  */

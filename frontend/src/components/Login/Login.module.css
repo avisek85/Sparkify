@@ -87,11 +87,12 @@ button[type="button"]:hover {
   }
   
   /* Responsive styles */
-  @media (max-width: 600px) {
-    .login-container {
-      padding: 1.5rem; 
-    }
+  @media (max-width: 768px){
+    .loginContainer {
+      padding: 2rem;
+      width: 100%;
     
-
+   
+    }
   }
   

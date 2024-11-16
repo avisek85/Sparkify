@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import { useNavigate, useParams } from "react-router-dom";
-import "./ChatSection.css";
+import styles from "./ChatSection.module.css";
 import { useAuthContext } from "../../../context/AuthContextProvider";
 import decodeJsonWebToken from "../../../utils/decodeJwt";
 import { useSocket } from "../../../context/SocketContext";
@@ -144,25 +144,23 @@ const socket = useSocket();
   return (
     <>
       <div>
-        <div className="search-container">
+        <div className={styles.searchContainer}>
           <input
-            className="search-input"
+            className={styles.searchInput}
             type="text"
             placeholder="Search messages..."
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
         </div>
-        <div className="chat-container">
+        <div className={styles.chatContainer}>
           {message.length === 0 ? (
             <div>No messages Found.</div>
           ) : (
             message.map((msg, index) => (
               <div
                 key={index}
-                className={`${
-                  msg.sender !== userId ? "received" : "sent"
-                } message  `}
+                className={`${msg.sender !== userId ? styles.received : styles.sent} ${styles.message}`}
                 ref={index === message.length - 1 ? lastMessageRef : null}
               >
                 {msg.isDeleted ? (
@@ -174,28 +172,28 @@ const socket = useSocket();
                         <video
                           controls
                           src={msg.mediaUrl}
-                          className="media-file"
+                          className={styles.mediaFile}
                         />
                       ) : (
                         <img
                           src={msg.mediaUrl}
                           alt="attachment"
-                          className="media-file"
+                          className={styles.mediaFile}
                         />
                       ))}
                     {/* Render the text below the media if it exists */}
-                    {msg.text && <p className="message-text">{msg.text}</p>}
+                    {msg.text && <p className={styles.messageText}>{msg.text}</p>}
                   </>
                 )}
-                <div className="message-footer">
-    <span className="timestamp">
+                <div className={styles.messageFooter}>
+    <span className={styles.timestamp}>
       {msg.timestamp
         ? new Date(msg.timestamp).toLocaleString()
         : new Date(Date.now()).toLocaleString()}
     </span>
     {!msg?.isDeleted && (
       <button
-        className="delete-button"
+        className={styles.deleteButton}
         onClick={() => deleteMessage(msg._id)}
       >
         X
@@ -206,9 +204,9 @@ const socket = useSocket();
             ))
           )}
         </div>
-        {isLoading && <div className="loading-indicator">Sending...</div>}
+        {isLoading && <div className={styles.loadingIndicator}>Sending...</div>}
         {/* Loading indicator */}
-        <div className="input-container">
+        <div className={styles.inputContainer}>
           <input
             type="text"
             value={newMessage}

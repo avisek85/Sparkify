@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.chat-container {
+.chatContainer {
   /* border: 2px solid blue; */
   display: flex;
   flex-direction: column;
@@ -38,13 +38,13 @@
 /* .message p{
   margin: 2 0 5px;
 } */
-.message-text {
+.messageText {
   margin: 1px 0;
   font-size: 1.1rem;
   line-height: 1; /* For better readability */
 }
 
-.message-footer {
+.messageFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,7 +73,7 @@
 
 
 
-.input-container {
+.inputContainer {
     display: flex;
     padding: 0.5rem;
     border-top: 1px solid #ccc;
@@ -86,7 +86,7 @@ input {
     /* font-size: 1rem; */
 }
 
-.input-container input[type="text"] {
+.inputContainer input[type="text"] {
     flex: 1;
     padding: 10px;
     /* font-size: 14px; */
@@ -94,12 +94,12 @@ input {
     border-radius: 4px;
   }
 
-  .input-container input[type="file"] {
+  .inputContainer input[type="file"] {
     /* font-size: 12px; */
     color: #555;
   }
 
-  .input-container button {
+  .inputContainer button {
     padding: 10px 15px;
     /* font-size: 14px; */
     background-color: #3d3c72;
@@ -110,7 +110,7 @@ input {
     transition: background-color 0.2s ease;
   }
   
-  .input-container button:hover {
+  .inputContainer button:hover {
     background-color: #2e2d5d;
   }
 
@@ -120,7 +120,7 @@ input {
   text-align: left;
   }
 
-  .delete-button {
+  .deleteButton {
     padding: 4px 8px;
   font-size: 12px;
   background-color: #ff6b6b;
@@ -131,12 +131,12 @@ input {
   transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
-  .delete-button:hover {
+  .deleteButton:hover {
     background-color: #e05151;
   transform: scale(1.1);
   }
 
-  .media-file {
+  .mediaFile {
     max-width: 100%;
   max-height: 200px;
   border-radius: 8px;
@@ -144,25 +144,25 @@ input {
   }
   
   /* Video specific styling */
-  video.media-file {
+  video.mediaFile {
     width: 100%;
     height: auto;
   }
 
-  .loading-indicator {
+  .loadingIndicator {
     text-align: center;
     font-size: 14px;
     color: #333;
     margin-top: 10px;
   }
 
-  .search-container {
+  .searchContainer {
     padding: 10px;
     background-color: #f1f1f1; /* Light background for the search bar */
     border-bottom: 1px solid #ccc; /* Divider between search and chat */
   }
   
-  .search-input {
+  .searchInput {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -171,13 +171,13 @@ input {
     transition: all 0.3s ease;
   }
   
-  .search-input:focus {
+  .searchInput:focus {
     border-color: #f53b57; /* Change border color on focus */
     box-shadow: 0 0 5px rgba(245, 59, 87, 0.5); /* Shadow effect on focus */
   }
   
   @media (max-width: 768px) {
-    .chat-container {
+    .chatContainer {
       width: 100%; /* Adjust width for smaller screens */
     }
   
@@ -185,12 +185,12 @@ input {
       max-width: 80%; /* Reduce message bubble width */
     }
   
-    .input-container {
+    .inputContainer {
       flex-wrap: wrap; /* Stack inputs and button on smaller screens */
     }
   
-    .input-container input[type="file"],
-    .input-container button {
+    .inputContainer input[type="file"],
+    .inputContainer button {
       flex-grow: 1;
       margin-top: 5px; /* Add spacing when stacked */
     }

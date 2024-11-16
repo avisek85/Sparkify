@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthContext } from "../../context/AuthContextProvider";
-import "./ChatPage.css";
+import styles from "./ChatPage.module.css";
 import ChatSection from "./chatsection/ChatSection";
 import { useParams } from "react-router-dom";
 import ChatList from "./chatList/ChatList";
@@ -28,14 +28,14 @@ function ChatPage() {
 
 
   return(<>
-  <div className="chat-page-container">
-    <Sidebar className="sidebar" />
+  <div className={styles.chatPageContainer}>
+    <Sidebar  />
     {receiverId ? (
-      <ChatSection receiverId={receiverId} className="chat-section" />
+      <ChatSection receiverId={receiverId}  />
     ) : (
-      <div className="placeholder">No Chats available</div>
+      <div className={styles.placeholder}>No Chats available</div>
     )}
-    <ChatList className="chat-list-container" />
+    <ChatList  />
   </div>
   
   </>)

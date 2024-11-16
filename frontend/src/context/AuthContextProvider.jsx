@@ -324,6 +324,55 @@ function AuthContextProvider({ children }) {
     }
   }
 
+  const searchPageFunction = async(preferences)=>{
+    setError("");
+    setLoading(true);
+    try {
+
+      const response = await axios.post(`${API_URI}/user/search`, preferences,{
+          headers:{
+              Authorization:`Bearer ${getToken()}`
+          }
+      });
+      console.log(response);
+      return (response.data); 
+  } catch (error) {
+      console.error("Error fetching search Profiles:", error);
+    alert('Error fetching search Profiles');
+  } finally {
+    setLoading(false);
+  }
+
+  }
+
+  const chatListFetchingFunction = async()=>{
+
+
+      // console.log("getAllProfile called");
+  
+      setLoading(true);
+      setError("");
+      try {
+        const response = await axios.get(`${API_URI}/user/chat/all`, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        });
+        return response;
+        // console.log("response data, ",response.data);
+      } catch (error) {
+        setError(
+          error.response?.data?.message || "Failed to fetch all chat list"
+        );
+  
+        console.log("Error fetching chatlist: ", error);
+      } finally {
+        setLoading(false);
+      }
+
+
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -342,7 +391,9 @@ function AuthContextProvider({ children }) {
         getChats,
         getSearch,
         getMediaUpload,
-        findProfile
+        findProfile,
+        searchPageFunction,
+        chatListFetchingFunction
       }}
     >
       {children}
